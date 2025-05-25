@@ -114,30 +114,29 @@
 
 
 <!-- Scripts -->
-<script>
-  // Wholesale product list with different pricing or bulk packs (example data)
+ <script>
   const products = [
-    {id: 1, label: 'Vikas Taaza Milk (500ml) - Wholesale Pack 12 pcs', price: 280, image: 'img/Taaza.png'},
-    {id: 2, label: 'Vikas Gold Milk (500ml) - Wholesale Pack 12 pcs', price: 380, image: 'img/Gold.png'},
-    {id: 3, label: 'Vikas Smart Milk (500ml) - Wholesale Pack 12 pcs', price: 270, image: 'img/Smart.png'},
-    {id: 4, label: 'Vikas Shakti Milk (500ml) - Wholesale Pack 12 pcs', price: 260, image: 'img/Shakti.png'},
-    {id: 5, label: 'Vikas Lite Milk (500ml) - Wholesale Pack 12 pcs', price: 290, image: 'img/Lite.png'},
-    {id: 6, label: 'Vikas Taaza Milk (200g) - Wholesale Pack 24 pcs', price: 260, image: 'img/Taaza.png'},
-    {id: 7, label: 'Vikas Plain Butter Milk (500ml) - Wholesale Pack 12 pcs', price: 170, image: 'img/Butter-milk.png'},
-    {id: 8, label: 'Vikas Dahi (1kg) - Wholesale Pack 6 pcs', price: 460, image: 'img/Curd.png'},
-    {id: 9, label: 'Vikas Dahi (200g) - Wholesale Pack 24 pcs', price: 460, image: 'img/Curd.png'},
-    {id: 10, label: 'Vikas Dahi (400g) - Wholesale Pack 12 pcs', price: 400, image: 'img/Curd.png'},
-    {id: 11, label: 'Vikas Paneer (200g) - Wholesale Pack 6 pcs', price: 520, image: 'img/paneer.png'},
-    {id: 12, label: 'Badam Pista Shrikhand (500g) - Wholesale Pack 6 pcs', price: 780, image: 'img/shrikhand-badam.png'},
-    {id: 13, label: 'Kesar Shrikhand (500g) - Wholesale Pack 6 pcs', price: 780, image: 'img/shrikhand-kesar.png'},
-    {id: 14, label: 'Ilaichi Shrikhand (500g) - Wholesale Pack 6 pcs', price: 780, image: 'img/shrikhand-ilaichi.png'},
-    {id: 15, label: 'Mast Lassi (200g) - Wholesale Pack 12 pcs', price: 280, image: 'img/lassi.png'},
-    {id: 16, label: 'Cow Ghee (200g) - Wholesale Pack 6 pcs', price: 860, image: 'img/ghee200.png'},
-    {id: 17, label: 'Cow Ghee (500g) - Wholesale Pack 6 pcs', price: 2050, image: 'img/ghee500.png'},
-    {id: 18, label: 'Cow Ghee (1kg) - Wholesale Pack 3 pcs', price: 2100, image: 'img/ghee500.png'},
-    {id: 19, label: 'Buffalo Ghee (200g) - Wholesale Pack 6 pcs', price: 870, image: 'img/ghee200.png'},
-    {id: 20, label: 'Buffalo Ghee (500g) - Wholesale Pack 6 pcs', price: 2180, image: 'img/ghee500.png'},
-    {id: 21, label: 'Buffalo Ghee (1kg) - Wholesale Pack 3 pcs', price: 2190, image: 'img/ghee500.png'}
+    {id: 1, label: 'Vikas Taaza Milk (500ml)', price: 22.5, image: 'img/Taaza.png'},
+    {id: 2, label: 'Vikas Gold Milk (500ml)', price: 35, image: 'img/Gold.png'},
+    {id: 3, label: 'Vikas Smart Milk (500ml)', price: 25, image: 'img/Smart.png'},
+    {id: 4, label: 'Vikas Shakti Milk (500ml)', price: 22, image: 'img/Shakti.png'},
+    {id: 5, label: 'Vikas Lite Milk (500ml)', price: 24, image: 'img/Lite.png'},
+    {id: 6, label: 'Vikas Taaza Milk (200g)', price: 9.6, image: 'img/Taaza.png'},
+    {id: 7, label: 'Vikas Plain Butter Milk (500ml)', price: 15, image: 'img/Butter-milk.png'},
+    {id: 8, label: 'Vikas Dahi (1kg)', price: 72, image: 'img/Curd.png'},
+    {id: 9, label: 'Vikas Dahi (200g)', price: 18, image: 'img/Curd.png'},
+    {id: 10, label: 'Vikas Dahi (400g)', price: 31, image: 'img/Curd.png'},
+    {id: 11, label: 'Vikas Paneer (200g)', price: 83, image: 'img/paneer.png'},
+    {id: 12, label: 'Badam Pista Shrikhand (500g)', price: 122.5, image: 'img/shrikhand-badam.png'},
+    {id: 13, label: 'Kesar Shrikhand (500g)', price: 122.5, image: 'img/shrikhand-kesar.png'},
+    {id: 14, label: 'Ilaichi Shrikhand (500g)', price: 122.5, image: 'img/shrikhand-ilaichi.png'},
+    {id: 15, label: 'Mast Lassi (200g)', price: 23, image: 'img/lassi.png'},
+    {id: 16, label: 'Cow Ghee (200g)', price: 130, image: 'img/ghee200.png'},
+    {id: 17, label: 'Cow Ghee (500g)', price: 318.5, image: 'img/ghee500.png'},
+    {id: 18, label: 'Cow Ghee (1kg)', price: 627, image: 'img/ghee500.png'},
+    {id: 19, label: 'Buffalo Ghee (200g)', price: 135, image: 'img/ghee200.png'},
+    {id: 20, label: 'Buffalo Ghee (500g)', price: 332, image: 'img/ghee500.png'},
+    {id: 21, label: 'Buffalo Ghee (1kg)', price: 654, image: 'img/ghee500.png'}
   ];
 
   const productInputsDiv = document.getElementById('productInputs');
@@ -166,16 +165,16 @@
       if (qty > 0) {
         const lineTotal = qty * p.price;
         total += lineTotal;
-        breakdown.push(`<li class="list-group-item">${p.label} x ${qty} = ₹${lineTotal}</li>`);
+        breakdown.push(`<li class="list-group-item">${p.label} x ${qty} = ₹${lineTotal.toFixed(2)}</li>`);
       }
     });
 
-    document.getElementById('totalAmount').innerText = total;
+    document.getElementById('totalAmount').innerText = total.toFixed(2);
     document.getElementById('itemBreakdown').innerHTML = breakdown.join('');
   }
 
   function resetResults() {
-    document.getElementById('totalAmount').innerText = '0';
+    document.getElementById('totalAmount').innerText = '0.00';
     document.getElementById('itemBreakdown').innerHTML = '';
   }
 </script>
