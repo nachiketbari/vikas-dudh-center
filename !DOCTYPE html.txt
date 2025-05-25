@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wholesale Customer Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    #results {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body class="bg-light">
+    <!-- ✅ Bootstrap Navbar Added -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Vikas Dudh Center</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="retail-calculator.html">Retail Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-semibold" href="#">Wholesale Calculator</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- ✅ End Navbar -->
+
+  <div class="container py-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+      <div class="card-body">
+        <h2 class="card-title text-primary text-center mb-4">Wholesale Customer Calculator</h2>
+        <form id="calcForm">
+          <!-- 20 products inputs -->
+          <div id="productsContainer">
+            <!-- JS will insert product inputs here -->
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Calculate Total</button>
+        </form>
+
+        <div id="results" class="mt-4 p-3 bg-light border rounded" style="display:none;">
+          <h5 class="fw-bold mb-3 text-success">Results:</h5>
+          <div id="result_items"></div>
+          <hr />
+          <p id="result_total" class="fs-5 text-success fw-bold"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Define your 20 products with name and wholesale price here:
+  const products = [
+    { id: "product1", name: "Product 1", price: 10 },
+    { id: "product2", name: "Product 2", price: 15 },
+    { id: "product3", name: "Product 3", price: 20 },
+    { id: "product4", name: "Product 4", price: 18 },
+    { id: "product5", name: "Product 5", price: 22 },
+    { id: "product6", name: "Product 6", price: 12 },
+    { id: "product7", name: "Product 7", price: 30 },
+    { id: "product8", name: "Product 8", price: 25 },
+    { id: "product9", name: "Product 9", price: 17 },
+    { id: "product10", name: "Product 10", price: 40 },
+    { id: "product11", name: "Product 11", price: 19 },
+    { id: "product12", name: "Product 12", price: 27 },
+    { id: "product13", name: "Product 13", price: 35 },
+    { id: "product14", name: "Product 14", price: 28 },
+    { id: "product15", name: "Product 15", price: 23 },
+    { id: "product16", name: "Product 16", price: 26 },
+    { id: "product17", name: "Product 17", price: 31 },
+    { id: "product18", name: "Product 18", price: 29 },
+    { id: "product19", name: "Product 19", price: 21 },
+    { id: "product20", name: "Product 20", price: 24 },
+  ];
+
+  const productsContainer = document.getElementById("productsContainer");
+
+  // Dynamically create input fields for all products
+  products.forEach(({id, name, price}) => {
+    const div = document.createElement("div");
+    div.className = "mb-3";
+    div.innerHTML = `
+      <label for="qty_${id}" class="form-label fw-semibold">${name} (₹${price})</label>
+      <input type="number" class="form-control" id="qty_${id}" min="0" placeholder="Enter quantity" />
+    `;
+    productsContainer.appendChild(div);
+  });
+
+  const calcForm = document.getElementById("calcForm");
+  const resultsDiv = document.getElementById("results");
+  const resultItemsDiv = document.getElementById("result_items");
+  const resultTotal = document.getElementById("result_total");
+
+  calcForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let total = 0;
+    resultItemsDiv.innerHTML = "";
+
+    products.forEach(({id, name, price}) => {
+      const qtyInput = document.getElementById("qty_" + id);
+      const qty = parseInt(qtyInput.value) || 0;
+      if (qty > 0) {
+        const itemTotal = qty * price;
+        total += itemTotal;
+        const p = document.createElement("p");
+        p.className = "mb-1 fw-semibold";
+        p.textContent = `${name}: ₹${itemTotal}`;
+        resultItemsDiv.appendChild(p);
+      }
+    });
+
+    if (total === 0) {
+      resultsDiv.style.display = "none";
+      alert("Please enter quantity for at least one product.");
+      return;
+    }
+
+    resultTotal.textContent = `Total Price: ₹${total}`;
+    resultsDiv.style.display = "block";
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Vikas Dudh Center</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="retail-calculator.html">Retail Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-semibold" href="#">Wholesale Calculator</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- ✅ End Navbar -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retail Customer Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    #results {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Vikas Dudh Center</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-semibold" href="#">Retail Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wholesale-calculator.html">Wholesale Calculator</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container py-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 700px;">
+      <div class="card-body">
+        <h2 class="card-title text-primary text-center mb-4">Retail Customer Calculator</h2>
+        <form id="retailCalcForm">
+
+          <!-- Product list -->
+          <!-- Each product row with small image, label, and input -->
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/Taaza.png" alt="Product 1" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product1" class="form-label fw-semibold mb-1">Vikas Taaza Milk (500ml) - ₹12</label>
+              <input type="number" class="form-control" id="qty_product1" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product2.png" alt="Product 2" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product2" class="form-label fw-semibold mb-1">Vikas Gold Milk (500ml) - ₹18</label>
+              <input type="number" class="form-control" id="qty_product2" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product3.png" alt="Product 3" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product3" class="form-label fw-semibold mb-1">Vikas Smart Milk (500ml) - ₹25</label>
+              <input type="number" class="form-control" id="qty_product3" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product4.png" alt="Product 4" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product4" class="form-label fw-semibold mb-1">Vikas Shakti Milk (500ml) - ₹22</label>
+              <input type="number" class="form-control" id="qty_product4" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product5.png" alt="Product 5" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product5" class="form-label fw-semibold mb-1">Vikas Lite Milk (500ml) - ₹27</label>
+              <input type="number" class="form-control" id="qty_product5" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-4 d-flex align-items-center gap-3">
+            <img src="images/product20.png" alt="Product 6" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product20" class="form-label fw-semibold mb-1">Vikas Taaza Milk (200g) - ₹18</label>
+              <input type="number" class="form-control" id="qty_product20" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product6.png" alt="Product 7" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product6" class="form-label fw-semibold mb-1">Vikas Plain Butter Milk (500ml) - ₹15</label>
+              <input type="number" class="form-control" id="qty_product6" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product7.png" alt="Product 8" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product7" class="form-label fw-semibold mb-1">Vikas Dahi (1kg) - ₹35</label>
+              <input type="number" class="form-control" id="qty_product7" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product8.png" alt="Product 9" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product8" class="form-label fw-semibold mb-1">Vikas Dahi (200g) - ₹28</label>
+              <input type="number" class="form-control" id="qty_product8" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product9.png" alt="Product 10" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product9" class="form-label fw-semibold mb-1">Vikas Dahi (400g) - ₹20</label>
+              <input type="number" class="form-control" id="qty_product9" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product10.png" alt="Product 11" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product10" class="form-label fw-semibold mb-1">Vikas Paneer (200g) - ₹45</label>
+              <input type="number" class="form-control" id="qty_product10" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <!-- Continue similarly for products 11 to 20 -->
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product11.png" alt="Product 12" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product11" class="form-label fw-semibold mb-1">Vikas Badam Pista Shrikhand (500g) - ₹21</label>
+              <input type="number" class="form-control" id="qty_product11" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product12.png" alt="Product 13" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product12" class="form-label fw-semibold mb-1">Vikas Kesar Shrikhand (500g) - ₹30</label>
+              <input type="number" class="form-control" id="qty_product12" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product13.png" alt="Product 14" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product13" class="form-label fw-semibold mb-1">Vikas Ilaichi (500g) - ₹40</label>
+              <input type="number" class="form-control" id="qty_product13" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product14.png" alt="Product 15" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product14" class="form-label fw-semibold mb-1">Product 14 - Skimmed Milk (500ml) - ₹33</label>
+              <input type="number" class="form-control" id="qty_product14" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product15.png" alt="Product 16" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product15" class="form-label fw-semibold mb-1">Vikas Mast Lassi (200g) - ₹55</label>
+              <input type="number" class="form-control" id="qty_product15" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product16.png" alt="Product 17" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product16" class="form-label fw-semibold mb-1">Vikas Cow Ghee (200g) - ₹38</label>
+              <input type="number" class="form-control" id="qty_product16" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product17.png" alt="Product 18" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product17" class="form-label fw-semibold mb-1">Vikas Cow Ghee (500g) - ₹20</label>
+              <input type="number" class="form-control" id="qty_product17" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product18.png" alt="Product 19" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product18" class="form-label fw-semibold mb-1">Vikas Buffalo Ghee (200g) - ₹33</label>
+              <input type="number" class="form-control" id="qty_product18" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+          <div class="mb-3 d-flex align-items-center gap-3">
+            <img src="images/product19.png" alt="Product 20" class="img-thumbnail" style="max-width: 80px;" />
+            <div class="flex-grow-1">
+              <label for="qty_product19" class="form-label fw-semibold mb-1">Vikas Buffalo Ghee (500g) - ₹26</label>
+              <input type="number" class="form-control" id="qty_product19" min="0" placeholder="Enter quantity" />
+            </div>
+          </div>
+
+        
+          <!-- Calculate Button -->
+          <button type="button" class="btn btn-primary w-100" onclick="calculateTotal()">Calculate Total</button>
+        </form>
+
+        <!-- Results -->
+        <div id="results" class="mt-4 p-3 bg-white border rounded shadow-sm"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Prices for each product
+    const prices = {
+      product1: 12,
+      product2: 18,
+      product3: 25,
+      product4: 22,
+      product5: 27,
+      product6: 15,
+      product7: 35,
+      product8: 28,
+      product9: 20,
+      product10: 45,
+      product11: 21,
+      product12: 30,
+      product13: 40,
+      product14: 33,
+      product15: 55,
+      product16: 38,
+      product17: 20,
+      product18: 33,
+      product19: 26,
+      product20: 18,
+    };
+
+    function calculateTotal() {
+      let total = 0;
+      let details = '<h5>Purchase Summary</h5><ul class="list-group list-group-flush">';
+
+      for (let i = 1; i <= 20; i++) {
+        const qty = parseInt(document.getElementById(`qty_product${i}`).value) || 0;
+        if (qty > 0) {
+          const price = prices[`product${i}`];
+          const amount = qty * price;
+          total += amount;
+
+          details += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        Product ${i}: ${qty} × ₹${price} = ₹${amount}
+                      </li>`;
+        }
+      }
+      details += `</ul><h4 class="mt-3">Total Amount: ₹${total}</h4>`;
+
+      document.getElementById('results').innerHTML = total > 0 ? details : '<p class="text-muted">Please enter quantity for at least one product.</p>';
+    }
+  </script>
+</body>
+</html>

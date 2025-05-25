@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home - Nagvel Vikas Dudh Center</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #e7fbe9, #f5fff9);
+      padding: 5rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .footer {
+      background-color: #f8f9fa;
+      padding: 2rem 0;
+      margin-top: 4rem;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      font-size: 0.95rem;
+    }
+
+    .footer a {
+      color: #198754;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .navbar-brand {
+      color: #198754 !important;
+      font-size: 1.5rem;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      color: #198754 !important;
+    }
+
+    .btn-primary,
+    .btn-outline-primary,
+    .btn-outline-success {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+      background-color: #13653f;
+      border-color: #13653f;
+    }
+
+    .btn-outline-primary:hover {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    .btn-outline-success:hover {
+      background-color: #198754;
+      color: white;
+    }
+
+    h1, h2 {
+      color: #1d4734;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top" aria-label="Main Navigation">
+    <div class="container">
+      <a class="navbar-brand fw-bold animate__animated animate__fadeInLeft" href="#">Nagvel Vikas Dudh Center</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse animate__animated animate__fadeInRight" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active fw-semibold" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="retail-calculator.html">Retail Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wholesale-calculator.html">Wholesale Calculator</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ✅ Hero Section -->
+  <main class="container text-center hero my-5 animate__animated animate__fadeInUp" role="main">
+    <h1 class="display-5 fw-bold mb-3">Welcome to Nagvel Vikas Dudh Center</h1>
+    <p class="lead mb-4">Fresh milk and dairy products delivered to your doorstep.</p>
+    <a href="index.html" class="btn btn-primary btn-lg mb-5 animate__animated animate__pulse animate__infinite" role="button">
+      Go to Calculator
+    </a>
+
+    <!-- ✅ Choose Customer Type -->
+    <section class="mt-4" aria-labelledby="choose-type">
+      <h2 class="mb-4" id="choose-type">Choose Customer Type</h2>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="retail-calculator.html" class="btn btn-outline-primary btn-lg px-4 py-2" role="button">
+          Retail Customer Calculator
+        </a>
+        <a href="wholesale-calculator.html" class="btn btn-outline-success btn-lg px-4 py-2" role="button">
+          Wholesale Customer Calculator
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer class="footer" role="contentinfo">
+  <div class="container">
+    <p class="mb-1">&copy; 2025 Nagvel Vikas Dudh Center. All rights reserved.</p>
+    <p class="mb-0">
+      Designed & Developed by 
+      <a href="https://nachiketportfolio.teamnt.in/" target="_blank" rel="noopener noreferrer">Nachiket Bari</a>
+    </p>
+  </div>
+</footer>
+
+  <!-- ✅ Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
